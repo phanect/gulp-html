@@ -19,9 +19,9 @@
     js-tokens "^4.0.0"
 
 "@phanect/eslint-plugin@latest":
-  version "2019.12.1"
-  resolved "https://registry.yarnpkg.com/@phanect/eslint-plugin/-/eslint-plugin-2019.12.1.tgz#57248c3e3557107bd03c6e9dcc51ce4a1f8b2271"
-  integrity sha512-uSiwe88FRXfJ/ORhZzK/+dYWO/jD55ZtKo027eZEO5jRApdOUe0G2lU/wKo4qftpg6H00HOuQnZEwMTNLIHmGw==
+  version "2020.1.5"
+  resolved "https://registry.yarnpkg.com/@phanect/eslint-plugin/-/eslint-plugin-2020.1.5.tgz#0d757818a594df1742a7b36b189010a51caedf96"
+  integrity sha512-ogFwK64GivHMZwnaZ6dUgyceQvo01PDVk993u3pgxJlNoAmHuhiakg4Bthf+m1VKB0pmxsLa/lxdyDbPi5D3Og==
   dependencies:
     "@typescript-eslint/eslint-plugin" latest
     "@typescript-eslint/parser" latest
@@ -29,7 +29,6 @@
     eslint-plugin-editorconfig latest
     eslint-plugin-import latest
     eslint-plugin-jsdoc latest
-    eslint-plugin-no-unsanitized latest
     eslint-plugin-node latest
     eslint-plugin-promise latest
     eslint-plugin-react latest
@@ -681,11 +680,6 @@ eslint-plugin-jsdoc@latest:
     regextras "^0.6.1"
     semver "^6.3.0"
     spdx-expression-parse "^3.0.0"
-
-eslint-plugin-no-unsanitized@latest:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-no-unsanitized/-/eslint-plugin-no-unsanitized-3.0.2.tgz#83c6fcf8e34715112757e03dd4ee436dce29ed45"
-  integrity sha512-JnwpoH8Sv4QOjrTDutENBHzSnyYtspdjtglYtqUtAHe6f6LLKqykJle+UwFPg23GGwt5hI3amS9CRDezW8GAww==
 
 eslint-plugin-node@latest:
   version "10.0.0"
