@@ -19,17 +19,17 @@
     js-tokens "^4.0.0"
 
 "@phanect/eslint-plugin@latest":
-  version "2019.12.1"
-  resolved "https://registry.yarnpkg.com/@phanect/eslint-plugin/-/eslint-plugin-2019.12.1.tgz#57248c3e3557107bd03c6e9dcc51ce4a1f8b2271"
-  integrity sha512-uSiwe88FRXfJ/ORhZzK/+dYWO/jD55ZtKo027eZEO5jRApdOUe0G2lU/wKo4qftpg6H00HOuQnZEwMTNLIHmGw==
+  version "2020.2.16"
+  resolved "https://registry.yarnpkg.com/@phanect/eslint-plugin/-/eslint-plugin-2020.2.16.tgz#d4205ffc77206cf0faca18ddf6204e06a42af69d"
+  integrity sha512-Rl9FBBgqe5TKz7BzV5c0wX3mTycJVdK/sav3kTCNnEt2aj70J6jsxUqTorlOqSm+7Z4M/GDuS2meqLsfkvN9nw==
   dependencies:
     "@typescript-eslint/eslint-plugin" latest
     "@typescript-eslint/parser" latest
     eslint latest
     eslint-plugin-editorconfig latest
     eslint-plugin-import latest
+    eslint-plugin-jest latest
     eslint-plugin-jsdoc latest
-    eslint-plugin-no-unsanitized latest
     eslint-plugin-node latest
     eslint-plugin-promise latest
     eslint-plugin-react latest
@@ -148,6 +148,15 @@
     "@typescript-eslint/typescript-estree" "2.12.0"
     eslint-scope "^5.0.0"
 
+"@typescript-eslint/experimental-utils@^2.5.0":
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-2.21.0.tgz#71de390a3ec00b280b69138d80733406e6e86bfa"
+  integrity sha512-olKw9JP/XUkav4lq0I7S1mhGgONJF9rHNhKFn9wJlpfRVjNo3PPjSvybxEldvCXnvD+WAshSzqH5cEjPp9CsBA==
+  dependencies:
+    "@types/json-schema" "^7.0.3"
+    "@typescript-eslint/typescript-estree" "2.21.0"
+    eslint-scope "^5.0.0"
+
 "@typescript-eslint/parser@latest":
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.12.0.tgz#393f1604943a4ca570bb1a45bc8834e9b9158884"
@@ -168,6 +177,19 @@
     glob "^7.1.6"
     is-glob "^4.0.1"
     lodash.unescape "4.0.1"
+    semver "^6.3.0"
+    tsutils "^3.17.1"
+
+"@typescript-eslint/typescript-estree@2.21.0":
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.21.0.tgz#7e4be29f2e338195a2e8c818949ed0ff727cc943"
+  integrity sha512-NC/nogZNb9IK2MEFQqyDBAciOT8Lp8O3KgAfvHx2Skx6WBo+KmDqlU3R9KxHONaijfTIKtojRe3SZQyMjr3wBw==
+  dependencies:
+    debug "^4.1.1"
+    eslint-visitor-keys "^1.1.0"
+    glob "^7.1.6"
+    is-glob "^4.0.1"
+    lodash "^4.17.15"
     semver "^6.3.0"
     tsutils "^3.17.1"
 
@@ -668,6 +690,13 @@ eslint-plugin-import@latest:
     read-pkg-up "^2.0.0"
     resolve "^1.12.0"
 
+eslint-plugin-jest@latest:
+  version "23.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-23.8.0.tgz#c978f959fa8395801742d13c5a3125a986d2661e"
+  integrity sha512-DKXmLxguZ1Lru4u5YM12ko3WLq6gqo7dhV2b63K731+/PNyZ/Ff6NGONQsGUtPLG9zU3kdz/N+2LTbweNZifeg==
+  dependencies:
+    "@typescript-eslint/experimental-utils" "^2.5.0"
+
 eslint-plugin-jsdoc@latest:
   version "18.4.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-18.4.3.tgz#69d45213d5eb3e5e7a80abcbc979602c7cfcfa6b"
@@ -681,11 +710,6 @@ eslint-plugin-jsdoc@latest:
     regextras "^0.6.1"
     semver "^6.3.0"
     spdx-expression-parse "^3.0.0"
-
-eslint-plugin-no-unsanitized@latest:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-no-unsanitized/-/eslint-plugin-no-unsanitized-3.0.2.tgz#83c6fcf8e34715112757e03dd4ee436dce29ed45"
-  integrity sha512-JnwpoH8Sv4QOjrTDutENBHzSnyYtspdjtglYtqUtAHe6f6LLKqykJle+UwFPg23GGwt5hI3amS9CRDezW8GAww==
 
 eslint-plugin-node@latest:
   version "10.0.0"
