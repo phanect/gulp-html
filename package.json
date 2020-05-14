@@ -1,6 +1,6 @@
 {
   "name": "vnu",
-  "version": "20.2.28",
+  "version": "20.3.16",
   "description": "Unofficial Node.js wrapper for Nu HTML Checker",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
