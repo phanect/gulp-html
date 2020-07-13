@@ -1,4 +1,5 @@
 # vnu [![NPM Version](http://img.shields.io/npm/v/vnu.svg)](https://www.npmjs.org/package/vnu)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fphanect%2Fvnujs.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fphanect%2Fvnujs?ref=badge_shield)
 
 Unofficial Node.js wrapper for [Nu HTML Checker](https://validator.github.io/)
 
@@ -175,3 +176,6 @@ Copyright 2018 Jumpei Ogawa
 This software is released under the MIT License. See [LICENSE](/LICENSE).
 
 This software is fork of [gulp-html](https://github.com/watilde/gulp-html) by [Daijiro Wachi](https://github.com/watilde)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fphanect%2Fvnujs.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fphanect%2Fvnujs?ref=badge_large)
