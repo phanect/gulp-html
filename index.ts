@@ -1,7 +1,6 @@
-import { exec } from "child_process";
-import { existsSync, writeFileSync } from "fs";
-import { file } from "tmp-promise";
+import { existsSync } from "fs";
 import * as vnuJar from "vnu-jar";
+import * as execa from "execa";
 
 // For Node.js 8.x
 import { URL } from "url";
@@ -65,7 +64,6 @@ function isURL(str: string): boolean {
  */
 export async function vnu(target: string, opt: NuOptions = {}): Promise<NuResult[]> {
   let mode: ("url" | "html") = "url";
-  let cleanupTmp = (): void => { /* By default do nothing */ };
 
   if (isURL(target) || existsSync(target)) {
     mode = "url";
@@ -75,16 +73,18 @@ export async function vnu(target: string, opt: NuOptions = {}): Promise<NuResult
 
   const options = Object.assign({
     "errors-only": false,
+    "exit-zero-always": true,
+    stdout: true,
     html: false,
     "no-stream": false,
   }, opt);
-  let vnuCmd = `java -Xss1024k -jar ${vnuJar} `;
+
+  const optionsArray = [ "-Xss1024k", "-jar", vnuJar, "--format json" ];
 
   // Set options
   for (const [ key, val ] of Object.entries(options)) {
     if ( // Unsupported options
       key === "format" ||
-      key === "exit-zero-always" ||
       key === "help" ||
       key === "verbose" ||
       key === "version" ||
@@ -97,70 +97,45 @@ export async function vnu(target: string, opt: NuOptions = {}): Promise<NuResult
       key === "filterpattern" ||
       key === "user-agent"
     ) {
-      vnuCmd += `--${key} "${val}" `;
+      optionsArray.push(`--${key} "${val}"`);
     } else if (val === true) { // Boolean options, and true is set
-      vnuCmd += `--${key} `;
+      optionsArray.push(`--${key}`);
     }
   }
 
-  vnuCmd += "--format json ";
+  const execaOptions: {shell: boolean; input?: string} = {
+    shell: true,
+  };
+
+  if (mode === "html") {
+    // we need to end the command with "-" to read from stdio
+    optionsArray.push("-");
+    execaOptions.input = target;
+  }
 
   if (mode === "url") {
-    vnuCmd += `"${target}"`;
-  } else { // mode === "html"
-    if (process.platform === "win32") {
-      const { fd, path, cleanup } = await file();
-
-      cleanupTmp = cleanup;
-      writeFileSync(fd, target); // write file content to tmp file
-
-      vnuCmd = `${vnuCmd}${path}`;
-    } else {
-      vnuCmd = `cat << _EOF_ | ${vnuCmd}-
-${target}
-_EOF_`;
-    }
+    optionsArray.push(target);
   }
 
-  return await new Promise((resolve, reject) => {
-    exec(vnuCmd, (err, stdout, stderr) => {
-      // Don't reject when Nu HTML Checker return 1 as return code (It returns 1 when HTML is not valid)
-      if (err && !err.message.startsWith("Command failed:")) {
-        return reject(err);
-      }
+  return execa("java", optionsArray, execaOptions).then(({ stdout, stderr }) => {
+    try {
+      const messages: NuResult[] = JSON.parse(stdout).messages;
 
-      if (stdout) {
-        console.log(stdout);
-      }
-
-      try {
-        let messages: NuResult[] = JSON.parse(stderr).messages;
-
-        if (process.platform === "win32" && mode === "html") {
-          cleanupTmp();
-
-          messages = messages.map(message => {
-            delete message.url;
-            return message;
-          });
-        }
-
-        return resolve(messages);
-      } catch (err) {
-        if (err instanceof SyntaxError) {
-          reject(new SyntaxError(`Nu HTML Checker did not return JSON. The output Nu HTML Checker returned is:
+      return messages;
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        throw new SyntaxError(`Nu HTML Checker did not return JSON. The output Nu HTML Checker returned is:
 -----
 ${stderr}
 -----
 The command is:
 -----
-${vnuCmd}
+java ${optionsArray.join(" ")}
 -----
-`));
-        } else {
-          reject(err);
-        }
+`);
+      } else {
+        throw error;
       }
-    });
-  }) as NuResult[];
-};
+    }
+  });
+}

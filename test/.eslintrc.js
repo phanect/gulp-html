@@ -4,13 +4,13 @@ const { join } = require("path");
 
 module.exports = {
   env: {
-    mocha: true
+    mocha: true,
   },
   parserOptions: {
     project: join(__dirname, "tsconfig.json"),
   },
   plugins: [
-    "chai-friendly"
+    "chai-friendly",
   ],
   rules: {
     "prefer-arrow-callback": "off",
