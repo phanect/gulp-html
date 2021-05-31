@@ -2,15 +2,15 @@
 
 module.exports = {
   root: true,
-  "extends": "plugin:@phanect/ts",
+  extends: "plugin:@phanect/plain",
 
-  "env": {
-    "browser": false,
-    "node": true
+  env: {
+    browser: false,
+    node: true,
   },
 
   parserOptions: {
     project: "./tsconfig.json",
   },
-  plugins: [ "@phanect" ]
+  plugins: [ "@phanect" ],
 };
