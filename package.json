@@ -28,6 +28,8 @@
   },
   "homepage": "https://github.com/phanect/vnujs",
   "dependencies": {
+    "execa": "^5.0.1",
+    "promisify-child-process": "^4.1.1",
     "vnu-jar": "21.4.9"
   },
   "devDependencies": {
