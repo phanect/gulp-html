@@ -29,7 +29,7 @@
   "homepage": "https://github.com/phanect/vnujs",
   "dependencies": {
     "tmp-promise": "^3.0.2",
-    "vnu-jar": "20.6.30"
+    "vnu-jar": "21.6.11"
   },
   "devDependencies": {
     "@phanect/eslint-plugin": "latest",
